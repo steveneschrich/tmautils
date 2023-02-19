@@ -23,6 +23,7 @@ all_logical <- function(.x) {
 #' \dontrun{
 #' > any_missing(data.frame(A=c(1,2,3),B=c(2,NA,4)))
 #' [1] TRUE
+#' }
 any_missing <- function(.x) {
   purrr::map_lgl(.x, \(y) {any(is.na(y))}) |>
     any()

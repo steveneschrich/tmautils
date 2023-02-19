@@ -15,3 +15,9 @@ A logical indicating if any elements are na
 \description{
 Test if any elements of data frame are na
 }
+\examples{
+\dontrun{
+> any_missing(data.frame(A=c(1,2,3),B=c(2,NA,4)))
+[1] TRUE
+}
+}
