@@ -1,12 +1,32 @@
 Package: tmautils
-Title: What the Package Does (One Line, Title Case)
+Title: Utilities for Managing Tissue Microarray Data
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Steven", "Eschrich", , "Steven.Eschrich@moffitt.org", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Utilities for managing tissue microarray (TMA) data. This type of data is relatively low 
+ density molecular readouts consisting of individual tissue cores arranged on a slide for antibody-based
+ evaluation of target expression. Traditionally, these cores were evaluated by a pathologist and scored
+ according to intensity of stain and/or percentage of the cells in the core that were stained. This package
+ provides some tools for managing this type of data. Note these are data management utilities rather than 
+ analytical utilities.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    cli,
+    dplyr,
+    glue,
+    magrittr,
+    purrr,
+    rlang,
+    tibble,
+    tidyr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+URL: https://steveneschrich.github.io/tmautils/
