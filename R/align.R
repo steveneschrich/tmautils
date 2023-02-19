@@ -72,20 +72,29 @@ try_data_frame_alignments <- function(reference, target, align_fun = tmautils::a
 #'
 #' @examples
 generate_alignment_mapping <- function(target, align_fun = alignment_functions[[1]]) {
-  tt <- eval(align_fun)(target)
-  targeti <- target
-  rownames(targeti) <- 1:nrow(target)
-  colnames(targeti) <- 1:ncol(target)
-  ti <- eval(align_fun)(targeti)
 
-  res <- dplyr::bind_cols(
-    tidyr::expand_grid(row_index = rownames(ti), col_index = colnames(ti)),
-    tidyr::expand_grid(row_label = rownames(tt), col_label = colnames(tt)),
-    tidyr::expand_grid(src_row_index = 1:nrow(target), src_col_index = 1:ncol(target)),
-    tidyr::expand_grid(src_row_label = rownames(target), src_col_label = colnames(target))
-  )
+  # Create a data frame labelled with row/column coordinates (separated by ___).
+  x <- matrix(nrow=nrow(target), ncol=ncol(target),
+              dimnames=list(1:nrow(target), 1:ncol(target))) |>
+    as.data.frame(check.names=FALSE)
+  for (row in 1:nrow(target)) {
+    for (col in 1:ncol(target)) {
+      x[row,col]<-sprintf("%s___%s", rownames(target)[row], colnames(target)[col])
+    }
+  }
 
-  res
+  # Transform the labelled data frame
+  tx <- eval(align_fun)(x)
+
+  # Now we can extract the transformed coordinates (using row_index and tidyr), as well as the original
+  # coordinates (from each cell).
+  tx$row_index <- 1:nrow(tx)
+  coord <- tx |>
+    tidyr::pivot_longer(cols = c(dplyr::everything(), -row_index), names_to="col_index", values_to="coordinates") |>
+    tidyr::separate(col = coordinates, into=c("src_row_index","src_col_index"), sep = "___", remove=TRUE) |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.integer))
+
+  coord
 }
 
 #' Find TMA alignment between reference matrix and target matrix
