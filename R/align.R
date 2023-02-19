@@ -88,6 +88,7 @@ generate_alignment_mapping <- function(target, align_fun = alignment_functions[[
 
   # Now we can extract the transformed coordinates (using row_index and tidyr), as well as the original
   # coordinates (from each cell).
+  colnames(tx) <- 1:ncol(tx)
   tx$row_index <- 1:nrow(tx)
   coord <- tx |>
     tidyr::pivot_longer(cols = c(dplyr::everything(), -row_index), names_to="col_index", values_to="coordinates") |>
