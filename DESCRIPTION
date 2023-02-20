@@ -1,6 +1,6 @@
 Package: tmautils
 Title: Utilities for Managing Tissue Microarray Data
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Steven", "Eschrich", , "Steven.Eschrich@moffitt.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9833-2788"))
