@@ -15,8 +15,6 @@ A transposed matrix or data frame, returned as a data frame.
 \description{
 Transpose a matrix/data frame into a data frame, preserving col/row names
 and ensuring the result is a data frame.
-
-NB: THIS IS BECAUSE OF REV I THINK, CHECK THAT FACT
 }
 \details{
 I could not find a cleaner way to do this. It appears that \code{\link[base:t]{base::t()}} will transpose

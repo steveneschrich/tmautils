@@ -3,7 +3,7 @@ Title: Utilities for Managing Tissue Microarray Data
 Version: 0.0.0.9000
 Authors@R: 
     person("Steven", "Eschrich", , "Steven.Eschrich@moffitt.org", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(ORCID = "0000-0002-9833-2788"))
 Description: Utilities for managing tissue microarray (TMA) data. This type of data is relatively low 
  density molecular readouts consisting of individual tissue cores arranged on a slide for antibody-based
  evaluation of target expression. Traditionally, these cores were evaluated by a pathologist and scored

@@ -37,7 +37,7 @@ the one that best aligns with reference.
 }
 \examples{
 \dontrun{
-> missing_overlap(data.frame(a=c(1,NA),b=c(2,NA)), data.frame(ap=c(2,NA), bp = c(2,3)))
-[1] 0.5
+missing_overlap(data.frame(a=c(1,NA),b=c(2,NA)), data.frame(ap=c(2,NA), bp = c(2,3)))
+# Returns [1] 0.5
 }
 }

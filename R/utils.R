@@ -21,8 +21,8 @@ all_logical <- function(.x) {
 #'
 #' @examples
 #' \dontrun{
-#' > any_missing(data.frame(A=c(1,2,3),B=c(2,NA,4)))
-#' [1] TRUE
+#' any_missing(data.frame(A=c(1,2,3),B=c(2,NA,4)))
+#' # returns [1] TRUE
 #' }
 any_missing <- function(.x) {
   purrr::map_lgl(.x, \(y) {any(is.na(y))}) |>
@@ -35,7 +35,6 @@ any_missing <- function(.x) {
 #'  and ensuring the result is a data frame.
 #'
 #'
-#' NB: THIS IS BECAUSE OF REV I THINK, CHECK THAT FACT
 #' @details I could not find a cleaner way to do this. It appears that [base::t()] will transpose
 #' a data.frame into a matrix, not a data.frame. Which is normally fine, but then I want to use
 #' the [base::rev()] function, which has different behavior between a matrix and a data frame.
