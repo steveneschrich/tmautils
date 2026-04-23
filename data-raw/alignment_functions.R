@@ -1,7 +1,7 @@
 ## code to prepare `alignment_functions` dataset goes here
 
 alignment_functions <- list(
-  quote(I),
+  quote(identity),
   quote(rev),
   quote(\(.x) rev(td(.x))),
   quote(\(.x) rev(td(rev(.x)))),
