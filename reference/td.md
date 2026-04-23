@@ -1,0 +1,45 @@
+# Transpose a matrix/data frame into a data frame
+
+Transpose a matrix/data frame into a data frame, preserving col/row
+names and ensuring the result is a data frame.
+
+## Usage
+
+``` r
+td(.x)
+```
+
+## Arguments
+
+- .x:
+
+  A matrix or data frame to transpose
+
+## Value
+
+A transposed matrix or data frame, returned as a data frame.
+
+## Details
+
+I could not find a cleaner way to do this. It appears that
+[`base::t()`](https://rdrr.io/r/base/t.html) will transpose a data.frame
+into a matrix, not a data.frame. Which is normally fine, but then I want
+to use the [`base::rev()`](https://rdrr.io/r/base/rev.html) function,
+which has different behavior between a matrix and a data frame.
+Specifically, using [`base::rev()`](https://rdrr.io/r/base/rev.html) on
+a matrix yields a reversed vector.
+
+At a minimum (for my application), the transpose should convert back
+into a data.frame. In the general case, this is not so easy as there is
+no guarantee that the transposed columns are of the same type
+row-by-row. R type conversion does what it does for this, so the problem
+is not too extreme.
+
+In addition to needing to convert types, we need to ignore the problems
+with the colnames after transposing since they may not be clean. Data
+frames typically do this, although I think perhaps the behavior has
+changed over time.
+
+This function does the task of transposing and converting back into a
+data frame without changing the col/row names (other than transposing
+them as well).

@@ -1,0 +1,50 @@
+# Find TMA alignment between reference matrix and target matrix
+
+Perform various transforms to target matrix to align missingness
+patterns with the reference matrix. The translated coordinates are
+returned.
+
+## Usage
+
+``` r
+find_tma_alignment(reference, target)
+```
+
+## Arguments
+
+- reference:
+
+  A matrix/data.frame representing the reference TMA design
+
+- target:
+
+  A matrix/data.frame representing stain data that may be reversed or
+  transposed.
+
+## Value
+
+A data.frame of row/column indexes in the original (src) frame of
+reference and the desired (reference) frame of reference.
+
+## Details
+
+Given a matrix representing a TMA result, the goal is to find a
+transform of the target matrix that aligns missingness patterns in the
+target and reference matrix.
+
+The content of the matrices does not matter; only the missingness
+patterns are matched. Since it is possible for missingness in the target
+to include other missing cores, the goal is to find the orientation that
+matches all reference missing cores. Once this is done, a translation of
+the coordinates between the reference and target are provided.
+
+The translations considered are transpose and column reverse.
+Combinations of these operators result in all possible shifts:
+right/left rotate, flip over long or short edge. It is assumed that one
+of these transformations will lead to perfect alignment of missingness
+patterns.
+
+The output of the function assumes that reference is "correct",
+therefore the coordinates in the form of `row_index` are in the
+reference's frame of reference. The `src_row_index` represents the
+target's frame of reference.
