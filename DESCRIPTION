@@ -1,6 +1,6 @@
 Package: tmautils
 Title: Utilities for Managing Tissue Microarray Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person("Steven", "Eschrich", , "Steven.Eschrich@moffitt.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9833-2788"))
@@ -27,6 +27,6 @@ Imports:
     tibble,
     tidyr
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 LazyData: true
 URL: https://steveneschrich.github.io/tmautils/
